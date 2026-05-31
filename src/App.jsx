@@ -598,7 +598,7 @@ function QuoteSection() {
         alt=""
         aria-hidden="true"
         draggable="false"
-        className="decorative-media absolute bottom-0 left-1/2 w-[200px] -translate-x-1/2"
+        className="decorative-media absolute -bottom-4 left-1/2 w-[200px] -translate-x-1/2"
         initial={{ opacity: 0, y: 120 }}
         animate={isQuoteDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 120 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}
