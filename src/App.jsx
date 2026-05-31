@@ -661,7 +661,7 @@ function SaveTheDateSection() {
       </MotionP>
 
       <MotionDiv
-        className="flex items-start justify-center gap-2 mt-8 w-full"
+        className="flex items-start justify-center mt-8 w-full"
         initial={{ opacity: 0, y: 28 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
         transition={{ delay: 0.3, duration: 0.7, ease: 'easeOut' }}
@@ -729,7 +729,7 @@ function SaveTheDateSection() {
                   />
                 </svg>
                 <MotionSpan
-                  className="absolute left-1/2 top-[70px] -translate-x-1/2 text-sm text-[#f49b5f] font-semibold text-lg"
+                  className="absolute left-1/2 top-[70px] -translate-x-1/2 leading-5 text-[#f49b5f] font-semibold text-lg"
                   initial={{ opacity: 0, y: 8 }}
                   animate={
                     isLoveDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }
@@ -997,11 +997,19 @@ function HeroSection() {
 
 function App() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
+  const audioRef = useRef(null)
   const inviteName =
     new URLSearchParams(window.location.search).get('to')?.trim() ||
     'Tamu Undangan'
 
   const handleOpenInvitation = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio('/assets/audios/sempurna.mp3')
+      audioRef.current.loop = true
+      audioRef.current.volume = 0.55
+    }
+
+    audioRef.current.play().catch(() => {})
     setIsInvitationOpen(true)
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }))
   }
