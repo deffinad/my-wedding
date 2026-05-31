@@ -234,17 +234,18 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
   )
 }
 
-function WeddingEventsItem({ time, title, description, align = 'left' }) {
+function WeddingEventsItem({ time, title, description, reminder, align = 'left' }) {
   return (
     <>
       {align === 'right' && <div className="col-span-4"></div>}
 
       <div
-        className={`relative z-10 col-span-8 flex flex-col gap-2 ${align === 'right' ? 'text-right' : ''}`}
+        className={`relative z-10 col-span-8 flex flex-col gap-1 ${align === 'right' ? 'text-right' : ''}`}
       >
         <span className="text-lg font-light">{time}</span>
         <span className="text-xl font-semibold">{title}</span>
         <p>{description}</p>
+        {reminder && <span className="text-xs">{reminder}</span>}
       </div>
 
       {align === 'left' && <div className="col-span-4"></div>}
@@ -314,6 +315,7 @@ function WeddingEventsSection() {
           title="Akad Nikah"
           description="The sacred union of two souls under God's blessing"
           align="left"
+          reminder={'*Only for family and close friends'}
         />
         <WeddingEventsItem
           time="10.10"
@@ -665,7 +667,7 @@ function SaveTheDateSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ delay: 0.15, duration: 0.65, ease: 'easeOut' }}
       >
-        Join us as we begin our forever. Save the date for <span className="font-semibold">July 18th, 2026, from 9:00 AM to 1:00 PM</span>, and celebrate this joyful occasion with our families
+        Join us as we begin our forever. Save the date for <span className="font-semibold">July 18th, 2026, from 9:00 AM to 12:00 PM</span>, and celebrate this joyful occasion with our families
       </MotionP>
 
       <MotionDiv
@@ -1020,7 +1022,7 @@ function App() {
       audioRef.current.volume = 0.55
     }
 
-    audioRef.current.play().catch(() => {})
+    audioRef.current.play().catch(() => { })
     setIsInvitationOpen(true)
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }))
   }
