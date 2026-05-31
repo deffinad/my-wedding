@@ -448,9 +448,7 @@ function RsvpSection() {
       >
         <div className="relative z-10 flex flex-col items-center text-center gap-2">
           <span className="text-3xl font-semibold">RSVP</span>
-          <p>
-            Please let us know if you can celebrate with us
-          </p>
+          <p>Please let us know if you can celebrate with us</p>
         </div>
 
         <form className="relative z-10 grid gap-4">
@@ -578,8 +576,8 @@ function QuoteSection() {
   }, [])
 
   return (
-    <section>
-      <div className="flex items-center justify-center text-center min-h-[50vh] p-4 flex-col gap-4">
+    <section className="relative overflow-hidden">
+      <div className="flex items-center justify-center text-center min-h-[50vh] p-4 flex-col gap-4 relative z-10">
         <TypewriterText
           className="text-xl italic text-[#f49b5f]"
           text='"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."'
@@ -595,6 +593,16 @@ function QuoteSection() {
           Ar-rum : 21
         </MotionSpan>
       </div>
+      <MotionImg
+        src="/assets/images/melati5.webp"
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+        className="decorative-media absolute bottom-0 left-1/2 w-[200px] -translate-x-1/2"
+        initial={{ opacity: 0, y: 120 }}
+        animate={isQuoteDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 120 }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
+      />
     </section>
   )
 }
@@ -647,7 +655,9 @@ function SaveTheDateSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ delay: 0.15, duration: 0.65, ease: 'easeOut' }}
       >
-        Join us as we begin our forever. Save the date<span className='font-semibold'>—July 18th, 2026—</span>and celebrate this joyful occasion with our families
+        Join us as we begin our forever. Save the date
+        <span className="font-semibold">—July 18th, 2026—</span>and celebrate
+        this joyful occasion with our families
       </MotionP>
 
       <MotionDiv
@@ -750,17 +760,17 @@ function OurStorySection() {
     scrollYProgress,
     [0, 1],
     [
-      'M0 40 L0 22 C25 -6 75 -6 100 22 L100 40 Z',  // melengkung ke atas
-      'M0 40 L0 40 C25 40 75 40 100 40 L100 40 Z',  // flat
+      'M0 40 L0 22 C25 -6 75 -6 100 22 L100 40 Z', // melengkung ke atas
+      'M0 40 L0 40 C25 40 75 40 100 40 L100 40 Z', // flat
     ]
   )
-  
+
   const bottomDividerPath = useTransform(
     scrollYProgress,
     [0, 1],
     [
-      'M0 0 L0 0 C25 0 75 0 100 0 L100 0 Z',        // flat
-      'M0 0 L0 18 C25 44 75 44 100 18 L100 0 Z',    // melengkung ke bawah
+      'M0 0 L0 0 C25 0 75 0 100 0 L100 0 Z', // flat
+      'M0 0 L0 18 C25 44 75 44 100 18 L100 0 Z', // melengkung ke bawah
     ]
   )
 
@@ -788,10 +798,10 @@ function OurStorySection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
             transition={{ delay: 0.3, duration: 0.75, ease: 'easeOut' }}
           >
-            It started with a chance meeting and a smile that was hard to forget.
-            Two hearts found each other in the most unexpected moment, and from
-            that day on, every season felt like a gift. Today, we choose each
-            other — for every tomorrow to come.
+            It started with a chance meeting and a smile that was hard to
+            forget. Two hearts found each other in the most unexpected moment,
+            and from that day on, every season felt like a gift. Today, we
+            choose each other — for every tomorrow to come.
           </MotionP>
 
           <MotionSpan
@@ -999,10 +1009,7 @@ function App() {
   if (!isInvitationOpen) {
     return (
       <div className="min-h-svh w-full overflow-x-clip touch-pan-y">
-        <OpeningSection
-          onOpen={handleOpenInvitation}
-          inviteName={inviteName}
-        />
+        <OpeningSection onOpen={handleOpenInvitation} inviteName={inviteName} />
       </div>
     )
   }
