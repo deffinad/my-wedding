@@ -143,7 +143,7 @@ function TypewriterText({ text, className, speed = 35, onComplete }) {
   )
 }
 
-function OpeningSection({ onOpen, inviteName }) {
+function OpeningSection({ onOpen, inviteName, maxPerson }) {
   return (
     <section className="relative min-h-svh w-full overflow-hidden touch-pan-y">
       <StaticDecorImage
@@ -151,7 +151,7 @@ function OpeningSection({ onOpen, inviteName }) {
         className="absolute inset-0 h-full w-full scale-150 object-cover"
       />
 
-      <div className="absolute bottom-0 left-1/2 z-10 flex h-[85vh] w-[90vw] -translate-x-1/2 flex-col gap-4 items-center justify-center rounded-[100%_100%_0_0/70%_70%_0_0] bg-white/70 p-6 text-center">
+      <div className="absolute bottom-0 left-1/2 z-10 flex h-[85vh] w-[90vw] -translate-x-1/2 flex-col gap-4 items-center justify-center rounded-[100%_100%_0_0/70%_70%_0_0] bg-white/70 p-6 pb-14 text-center">
         <div className="flex flex-col">
           <span className="uppercase text-[#565f44]">dear</span>
           <span className="uppercase text-[#565f44] font-semibold">
@@ -182,6 +182,11 @@ function OpeningSection({ onOpen, inviteName }) {
         >
           Open Invitation
         </button>
+
+        <span className="absolute bottom-6 left-1/2 w-[min(100%-32px,420px)] -translate-x-1/2 text-xs leading-5 text-gray-500">
+          * Please do not share this invitation until the day of the wedding.
+          This invitation is valid for {maxPerson} person
+        </span>
       </div>
 
       <StaticDecorImage
@@ -434,7 +439,7 @@ function DresscodeSection() {
   )
 }
 
-function RsvpSection() {
+function RsvpSection({ maxPerson }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.35 })
 
@@ -478,7 +483,10 @@ function RsvpSection() {
             />
           </label>
 
-          <span className="text-sm text-gray-500">* Please do not share this invitation until the day of the wedding. This invitation is valid for 2 person</span>
+          <span className="text-sm text-gray-500">
+            * Please do not share this invitation until the day of the wedding.
+            This invitation is valid for {maxPerson} person
+          </span>
 
           <button
             type="submit"
@@ -657,9 +665,7 @@ function SaveTheDateSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ delay: 0.15, duration: 0.65, ease: 'easeOut' }}
       >
-        Join us as we begin our forever. Save the date
-        <span className="font-semibold">—July 18th, 2026—</span>and celebrate
-        this joyful occasion with our families
+        Join us as we begin our forever. Save the date for <span className="font-semibold">July 18th, 2026, from 9:00 AM to 1:00 PM</span>, and celebrate this joyful occasion with our families
       </MotionP>
 
       <MotionDiv
@@ -1004,6 +1010,9 @@ function App() {
     new URLSearchParams(window.location.search).get('to')?.trim() ||
     'Tamu Undangan'
 
+  const maxPerson =
+    new URLSearchParams(window.location.search).get('max')?.trim() || '1'
+
   const handleOpenInvitation = () => {
     if (!audioRef.current) {
       audioRef.current = new Audio('/assets/audios/sempurna.mp3')
@@ -1019,7 +1028,11 @@ function App() {
   if (!isInvitationOpen) {
     return (
       <div className="min-h-svh w-full overflow-x-clip touch-pan-y">
-        <OpeningSection onOpen={handleOpenInvitation} inviteName={inviteName} />
+        <OpeningSection
+          onOpen={handleOpenInvitation}
+          inviteName={inviteName}
+          maxPerson={maxPerson}
+        />
       </div>
     )
   }
@@ -1032,7 +1045,7 @@ function App() {
       <WeddingEventsSection />
       <OurStorySection />
       <DresscodeSection />
-      <RsvpSection />
+      <RsvpSection maxPerson={maxPerson} />
       <FooterSection />
     </div>
   )
