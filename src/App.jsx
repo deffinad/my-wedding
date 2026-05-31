@@ -478,6 +478,8 @@ function RsvpSection() {
             />
           </label>
 
+          <span className="text-sm text-gray-500">* Please do not share this invitation until the day of the wedding. This invitation is valid for 2 person</span>
+
           <button
             type="submit"
             className="rounded-full bg-[#565f44] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition active:scale-95"
