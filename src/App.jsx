@@ -742,36 +742,77 @@ function SaveTheDateSection() {
 function OurStorySection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.45 })
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 85%', 'end 35%'],
+  })
+  const topDividerPath = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [
+      'M0 40 L0 22 C25 -6 75 -6 100 22 L100 40 Z',  // melengkung ke atas
+      'M0 40 L0 40 C25 40 75 40 100 40 L100 40 Z',  // flat
+    ]
+  )
+  
+  const bottomDividerPath = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [
+      'M0 0 L0 0 C25 0 75 0 100 0 L100 0 Z',        // flat
+      'M0 0 L0 18 C25 44 75 44 100 18 L100 0 Z',    // melengkung ke bawah
+    ]
+  )
 
   return (
-    <section ref={ref} className="px-4 py-12">
-      <MotionDiv
-        className="flex min-h-[30vh] flex-col items-center justify-center gap-6 text-center"
-        initial={{ opacity: 0, y: 52 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 52 }}
-        transition={{ duration: 0.85, ease: 'easeOut' }}
+    <section ref={ref} className="relative py-10">
+      <svg
+        className="absolute left-0 top-0 z-10 h-10 w-full"
+        viewBox="0 0 100 40"
+        preserveAspectRatio="none"
+        aria-hidden="true"
       >
-        <MotionP
-          className="max-w-[42rem] text-lg leading-8 text-[#f49b5f]"
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          transition={{ delay: 0.3, duration: 0.75, ease: 'easeOut' }}
-        >
-          It started with a chance meeting and a smile that was hard to forget.
-          Two hearts found each other in the most unexpected moment, and from
-          that day on, every season felt like a gift. Today, we choose each
-          other — for every tomorrow to come.
-        </MotionP>
+        <MotionPath d={topDividerPath} fill="#565f44" />
+      </svg>
 
-        <MotionSpan
-          className="text-xl font-semibold uppercase tracking-[0.12em] text-[#565f44]"
-          initial={{ opacity: 0, y: 18 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-          transition={{ delay: 0.55, duration: 0.65, ease: 'easeOut' }}
+      <div className="relative bg-[#565f44] px-4 py-16">
+        <MotionDiv
+          className="flex min-h-[30vh] flex-col items-center justify-center gap-6 text-center"
+          initial={{ opacity: 0, y: 52 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 52 }}
+          transition={{ duration: 0.85, ease: 'easeOut' }}
         >
-          — Deffin & Sarah —
-        </MotionSpan>
-      </MotionDiv>
+          <MotionP
+            className="max-w-[42rem] text-lg text-white"
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ delay: 0.3, duration: 0.75, ease: 'easeOut' }}
+          >
+            It started with a chance meeting and a smile that was hard to forget.
+            Two hearts found each other in the most unexpected moment, and from
+            that day on, every season felt like a gift. Today, we choose each
+            other — for every tomorrow to come.
+          </MotionP>
+
+          <MotionSpan
+            className="text-xl font-semibold uppercase tracking-[0.12em] text-white"
+            initial={{ opacity: 0, y: 18 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+            transition={{ delay: 0.55, duration: 0.65, ease: 'easeOut' }}
+          >
+            — Deffin & Sarah —
+          </MotionSpan>
+        </MotionDiv>
+      </div>
+
+      <svg
+        className="absolute bottom-0 left-0 z-10 h-10 w-full"
+        viewBox="0 0 100 40"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <MotionPath d={bottomDividerPath} fill="#565f44" />
+      </svg>
     </section>
   )
 }
@@ -972,9 +1013,9 @@ function App() {
       <QuoteSection />
       <SaveTheDateSection />
       <WeddingEventsSection />
+      <OurStorySection />
       <DresscodeSection />
       <RsvpSection />
-      <OurStorySection />
       <FooterSection />
     </div>
   )
