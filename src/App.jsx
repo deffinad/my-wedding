@@ -589,7 +589,7 @@ function QuoteSection() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="flex items-center justify-center text-center min-h-[50vh] p-4 flex-col gap-4 relative z-10">
+      <div className="flex items-center justify-center text-center min-h-[60vh] p-4 flex-col gap-4 relative z-10">
         <TypewriterText
           className="text-xl italic text-[#f49b5f]"
           text='"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."'
@@ -610,7 +610,7 @@ function QuoteSection() {
         alt=""
         aria-hidden="true"
         draggable="false"
-        className="decorative-media absolute -bottom-4 left-1/2 w-[200px] -translate-x-1/2"
+        className="decorative-media absolute bottom-0 left-1/2 w-[200px] -translate-x-1/2"
         initial={{ opacity: 0, y: 120 }}
         animate={isQuoteDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 120 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}
