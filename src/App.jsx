@@ -483,7 +483,7 @@ function RsvpSection({ maxPerson }) {
             />
           </label>
 
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-gray-500 font-semibold">
             * Please do not share this invitation until the day of the wedding.
             This invitation is valid for {maxPerson} person
           </span>
