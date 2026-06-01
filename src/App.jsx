@@ -557,7 +557,7 @@ function FooterSection() {
         transition={{ duration: 0.85, ease: 'easeOut' }}
       >
         <div className="flex flex-col gap-1 flex-1 rounded-2xl items-center justify-center border border-white text-white">
-          <span className="font-semibold text-2xl uppercase">
+          <span className="font-bold text-4xl capitalize font-alex-brush">
             Deffin & Sarah
           </span>
           <span className="font-light capitalize">from us with love</span>
@@ -827,12 +827,12 @@ function OurStorySection() {
           </MotionP>
 
           <MotionSpan
-            className="text-xl font-semibold uppercase tracking-[0.12em] text-white"
+            className="text-3xl capitalize text-white"
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
             transition={{ delay: 0.55, duration: 0.65, ease: 'easeOut' }}
           >
-            — Deffin & Sarah —
+          <span className='font-alex-brush'>— Deffin & Sarah —</span> 
           </MotionSpan>
         </MotionDiv>
       </div>
