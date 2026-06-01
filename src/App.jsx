@@ -931,7 +931,7 @@ function HeroSection() {
 
       <SwayImage
         src="/assets/images/pohon.webp"
-        className="absolute bottom-48 -left-64 w-11/12 transform -scale-x-100"
+        className="absolute bottom-96 -left-64 w-11/12 transform -scale-x-100"
         duration={4.8}
         enter="scale"
         enterDelay={0.35}
@@ -975,7 +975,7 @@ function HeroSection() {
 
       <SwayImage
         src="/assets/images/pohon.webp"
-        className="absolute bottom-48 -right-64 w-11/12"
+        className="absolute bottom-96 -right-64 w-11/12"
         rotate={[2, -2.25, 2]}
         duration={5.2}
         delay={0.65}
