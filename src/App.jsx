@@ -161,7 +161,7 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
 
         <img
           src="/assets/images/logo.webp"
-          alt="Deffin and Sarah"
+          alt="Sarah and Deffin"
           className="mb-8 w-28"
         />
 
@@ -173,7 +173,7 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
             <span className="uppercase text-[#565f44]">the wedding of</span>
           </div>
           <span className="capitalize text-[#565f44] text-5xl font-bold font-alex-brush">
-            Deffin & Sarah
+            Sarah & Deffin
           </span>
         </div>
 
@@ -558,7 +558,7 @@ function FooterSection() {
       >
         <div className="flex flex-col gap-1 flex-1 rounded-2xl items-center justify-center border border-white text-white">
           <span className="font-bold text-4xl capitalize font-alex-brush">
-            Deffin & Sarah
+            Sarah & Deffin
           </span>
           <span className="font-light capitalize">from us with love</span>
         </div>
@@ -832,7 +832,7 @@ function OurStorySection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
             transition={{ delay: 0.55, duration: 0.65, ease: 'easeOut' }}
           >
-          <span className='font-alex-brush'>— Deffin & Sarah —</span> 
+            <span className='font-alex-brush'>— Sarah & Deffin —</span>
           </MotionSpan>
         </MotionDiv>
       </div>
@@ -917,9 +917,9 @@ function HeroSection() {
               ease: 'easeOut',
             }}
           >
-            <span className="capitalize text-5xl font-bold font-alex-brush">deffin</span>
-            <span className="capitalize text-5xl font-bold font-alex-brush">&</span>
             <span className="capitalize text-5xl font-bold font-alex-brush">sarah</span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">&</span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">deffin</span>
           </MotionDiv>
         </MotionDiv>
       </div>
