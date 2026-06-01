@@ -153,8 +153,8 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
 
       <div className="absolute bottom-0 left-1/2 z-10 flex h-[85vh] w-[90vw] -translate-x-1/2 flex-col gap-4 items-center justify-center rounded-[100%_100%_0_0/70%_70%_0_0] bg-white/70 p-6 pb-14 text-center">
         <div className="flex flex-col">
-          <span className="uppercase text-[#565f44]">dear</span>
-          <span className="uppercase text-[#565f44] font-semibold">
+          <span className="uppercase text-secondary">dear</span>
+          <span className="uppercase text-secondary font-semibold">
             {inviteName}
           </span>
         </div>
@@ -167,12 +167,12 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <span className="uppercase tracking-[0.2em] text-[#565f44]">
+            <span className="uppercase tracking-[0.2em] text-secondary">
               You're invited to
             </span>
-            <span className="uppercase text-[#565f44]">the wedding of</span>
+            <span className="uppercase text-secondary">the wedding of</span>
           </div>
-          <span className="capitalize text-[#565f44] text-5xl font-bold font-alex-brush">
+          <span className="capitalize text-secondary text-5xl font-bold font-alex-brush">
             Sarah & Deffin
           </span>
         </div>
@@ -180,7 +180,7 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
         <button
           type="button"
           onClick={onOpen}
-          className="mt-10 rounded-full bg-[#565f44] px-8 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-lg shadow-[#565f44]/20 transition duration-300 active:scale-95"
+          className="mt-10 rounded-full bg-secondary px-8 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-lg shadow-secondary/20 transition duration-300 active:scale-95"
         >
           Open Invitation
         </button>
@@ -250,10 +250,10 @@ function WeddingEventsItem({
       <div
         className={`relative z-10 col-span-8 flex flex-col gap-1 ${align === 'right' ? 'text-right' : ''}`}
       >
-        <span className="text-lg font-light">{time}</span>
-        <span className="text-xl font-semibold">{title}</span>
-        <p>{description}</p>
-        {reminder && <span className="text-xs">{reminder}</span>}
+        <span className="text-lg font-light text-primary">{time}</span>
+        <span className="text-xl font-semibold text-primary">{title}</span>
+        <p className='text-primary'>{description}</p>
+        {reminder && <span className="text-xs text-primary">{reminder}</span>}
       </div>
 
       {align === 'left' && <div className="col-span-4"></div>}
@@ -285,7 +285,7 @@ function WeddingEventsSection() {
   return (
     <div ref={ref} className="relative overflow-hidden">
       <svg
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full text-accent"
         viewBox="0 0 100 180"
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -294,7 +294,7 @@ function WeddingEventsSection() {
           ref={pathRef}
           d={timelinePath}
           fill="none"
-          stroke="#f49b5f"
+          stroke="currentColor"
           strokeLinecap="round"
           strokeWidth="0.7"
           opacity="0.18"
@@ -302,7 +302,7 @@ function WeddingEventsSection() {
         <MotionPath
           d={timelinePath}
           fill="none"
-          stroke="#f49b5f"
+          stroke="currentColor"
           strokeLinecap="round"
           strokeWidth="0.95"
           style={{ pathLength: scrollYProgress }}
@@ -375,7 +375,7 @@ function LocationSection() {
             className={'w-full h-full object-cover rounded-2xl'}
           />
           <MotionDiv
-            className="rounded-full w-18 h-18 bg-[#f49b5f] flex items-center justify-center text-center text-white absolute -bottom-8 right-0"
+            className="rounded-full w-18 h-18 bg-accent flex items-center justify-center text-center text-white absolute -bottom-8 right-0"
             style={{
               x: locationButtonX,
               opacity: locationButtonOpacity,
@@ -395,13 +395,13 @@ function LocationSection() {
         transition={{ delay: 0.2, duration: 0.75, ease: 'easeOut' }}
       >
         <div className="flex flex-col">
-          <span className="text-xl font-semibold">NUU JII</span>
-          <span className="text-xl font-semibold">
+          <span className="text-xl font-semibold text-primary">NUU JII</span>
+          <span className="text-xl font-semibold text-primary">
             Resto, Coffee, and Events
           </span>
         </div>
 
-        <p>
+        <p className="text-primary">
           Jl. Rancasawo Blk. H No.100, Margasari, Kec. Buahbatu, Kota Bandung,
           Jawa Barat 40286
         </p>
@@ -413,7 +413,7 @@ function LocationSection() {
 function DresscodeSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.45 })
-  const colors = ['#565f44', '#f49b5f', '#f7d7bd', '#f8f4ea']
+  const colors = ['bg-secondary', 'bg-accent', 'bg-orange-100', 'bg-stone-50']
 
   return (
     <section ref={ref}>
@@ -423,13 +423,12 @@ function DresscodeSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <span className="text-3xl font-semibold">Dresscode</span>
+        <span className="text-3xl font-semibold text-primary">Dresscode</span>
         <div className="flex items-center gap-4">
           {colors.map((color, index) => (
             <MotionDiv
               key={color}
-              className="rounded-full w-20 h-20 border border-[#565f44]/20"
-              style={{ backgroundColor: color }}
+              className={`rounded-full w-20 h-20 border border-secondary/20 ${color}`}
               initial={{ opacity: 0, scale: 0.45, y: 20 }}
               animate={
                 isInView
@@ -456,40 +455,40 @@ function RsvpSection({ maxPerson }) {
   return (
     <section ref={ref} className="px-4 py-8">
       <MotionDiv
-        className="rounded-2xl border border-[#565f44] p-4 flex flex-col gap-5 min-h-[400px] relative overflow-hidden bg-[#fffaf4]"
+        className="rounded-2xl border border-secondary p-4 flex flex-col gap-5 min-h-[400px] relative overflow-hidden"
         initial={{ opacity: 0, y: 64 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 64 }}
         transition={{ duration: 0.85, ease: 'easeOut' }}
       >
         <div className="relative z-10 flex flex-col items-center text-center gap-2">
-          <span className="text-3xl font-semibold">RSVP</span>
-          <p>Please let us know if you can celebrate with us</p>
+          <span className="text-3xl font-semibold text-primary">RSVP</span>
+          <p className="text-primary">Please let us know if you can celebrate with us</p>
         </div>
 
         <form className="relative z-10 grid gap-4">
-          <label className="grid gap-2 text-left text-sm font-semibold text-[#565f44]">
+          <label className="grid gap-2 text-left text-sm font-semibold text-primary">
             Name
             <input
               type="text"
               placeholder="Your name"
-              className="rounded-xl border border-[#565f44]/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-[#f49b5f]"
+              className="rounded-xl border border-secondary/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-accent"
             />
           </label>
 
-          <label className="grid gap-2 text-left text-sm font-semibold text-[#565f44]">
+          <label className="grid gap-2 text-left text-sm font-semibold text-primary">
             Attendance
-            <select className="rounded-xl border border-[#565f44]/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-[#f49b5f]">
+            <select className="rounded-xl border border-secondary/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-accent">
               <option>Will attend</option>
               <option>Unable to attend</option>
             </select>
           </label>
 
-          <label className="grid gap-2 text-left text-sm font-semibold text-[#565f44]">
+          <label className="grid gap-2 text-left text-sm font-semibold text-primary">
             Wishes
             <textarea
               rows="4"
               placeholder="Write your wishes"
-              className="resize-none rounded-xl border border-[#565f44]/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-[#f49b5f]"
+              className="resize-none rounded-xl border border-secondary/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-accent"
             />
           </label>
 
@@ -500,7 +499,7 @@ function RsvpSection({ maxPerson }) {
 
           <button
             type="submit"
-            className="rounded-full bg-[#565f44] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition active:scale-95"
+            className="rounded-full bg-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition active:scale-95"
           >
             Send RSVP
           </button>
@@ -551,7 +550,7 @@ function FooterSection() {
   return (
     <footer ref={ref} className="px-4 py-8">
       <MotionDiv
-        className="p-4 min-h-[200px] flex bg-[#565f44] rounded-2xl relative"
+        className="p-4 min-h-[200px] flex bg-secondary rounded-2xl relative"
         initial={{ opacity: 0, y: 54 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 54 }}
         transition={{ duration: 0.85, ease: 'easeOut' }}
@@ -599,13 +598,13 @@ function QuoteSection() {
     <section className="relative overflow-hidden">
       <div className="flex items-center justify-center text-center min-h-[60vh] p-4 flex-col gap-4 relative z-10">
         <TypewriterText
-          className="text-xl italic text-[#f49b5f]"
+          className="text-xl italic text-accent"
           text='"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."'
           speed={50}
           onComplete={handleComplete}
         />
         <MotionSpan
-          className="uppercase font-semibold text-[#565f44]"
+          className="uppercase font-semibold text-primary"
           initial={{ opacity: 0, y: 12 }}
           animate={isQuoteDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
@@ -662,7 +661,7 @@ function SaveTheDateSection() {
       className="flex items-center justify-center text-center p-4 flex-col gap-4"
     >
       <MotionSpan
-        className="text-3xl font-semibold capitalize"
+        className="text-3xl font-semibold capitalize text-primary"
         initial={{ opacity: 0, y: 28 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
         transition={{ duration: 0.65, ease: 'easeOut' }}
@@ -670,7 +669,7 @@ function SaveTheDateSection() {
         Save the date
       </MotionSpan>
       <MotionP
-        className="max-w-[34rem] leading-6"
+        className="max-w-[34rem] leading-6 text-primary"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ delay: 0.15, duration: 0.65, ease: 'easeOut' }}
@@ -693,23 +692,23 @@ function SaveTheDateSection() {
             key={item.day}
             className="flex w-12 shrink-0 flex-col items-center gap-4"
           >
-            <span className="text-lg font-semibold">{item.day}</span>
+            <span className="text-lg font-semibold text-primary">{item.day}</span>
             {item.active ? (
               <div className="relative flex min-h-32 w-12 justify-center">
-                <span className="relative z-10 text-lg">{item.date}</span>
+                <span className="relative z-10 text-lg text-primary">{item.date}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 58 100"
                   width="58"
                   height="100"
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 overflow-visible"
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 overflow-visible text-accent"
                   aria-hidden="true"
                 >
                   {/* Path hati yang benar - simetris & smooth */}
                   <MotionPath
                     d="M29 48 C20 40 8 30 8 18 C8 10 14 5 21 5 C25 5 27 7 29 10 C31 7 33 5 37 5 C44 5 50 10 50 18 C50 30 38 40 29 48 Z"
                     fill="none"
-                    stroke="#f49b5f"
+                    stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -725,7 +724,7 @@ function SaveTheDateSection() {
                   {/* Stroke fill dalam hati (opsional, untuk efek fill) */}
                   <MotionPath
                     d="M29 48 C20 40 8 30 8 18 C8 10 14 5 21 5 C25 5 27 7 29 10 C31 7 33 5 37 5 C44 5 50 10 50 18 C50 30 38 40 29 48 Z"
-                    fill="#f49b5f"
+                    fill="currentColor"
                     fillOpacity={0}
                     stroke="none"
                     initial={{ fillOpacity: 0 }}
@@ -738,7 +737,7 @@ function SaveTheDateSection() {
                   <MotionPath
                     d="M29 48 L29 72"
                     fill="none"
-                    stroke="#f49b5f"
+                    stroke="currentColor"
                     strokeWidth="1.4"
                     strokeLinecap="round"
                     initial={{ pathLength: 0 }}
@@ -751,7 +750,7 @@ function SaveTheDateSection() {
                   />
                 </svg>
                 <MotionSpan
-                  className="absolute left-1/2 top-[70px] -translate-x-1/2 leading-5 text-[#f49b5f] font-semibold text-lg"
+                  className="absolute left-1/2 top-[70px] -translate-x-1/2 leading-5 text-accent font-semibold text-lg"
                   initial={{ opacity: 0, y: 8 }}
                   animate={
                     isLoveDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }
@@ -804,10 +803,10 @@ function OurStorySection() {
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <MotionPath d={topDividerPath} fill="#565f44" />
+        <MotionPath d={topDividerPath} className="fill-secondary" />
       </svg>
 
-      <div className="relative bg-[#565f44] px-4 py-16">
+      <div className="relative bg-secondary px-4 py-16">
         <MotionDiv
           className="flex min-h-[30vh] flex-col items-center justify-center gap-6 text-center"
           initial={{ opacity: 0, y: 52 }}
@@ -832,7 +831,7 @@ function OurStorySection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
             transition={{ delay: 0.55, duration: 0.65, ease: 'easeOut' }}
           >
-            <span className='font-alex-brush'>— Sarah & Deffin —</span>
+            <span className="font-alex-brush">— Sarah & Deffin —</span>
           </MotionSpan>
         </MotionDiv>
       </div>
@@ -843,7 +842,7 @@ function OurStorySection() {
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <MotionPath d={bottomDividerPath} fill="#565f44" />
+        <MotionPath d={bottomDividerPath} className="fill-secondary" />
       </svg>
     </section>
   )
@@ -895,7 +894,7 @@ function HeroSection() {
             }}
           />
           <MotionSpan
-            className="uppercase text-[#565f44]"
+            className="uppercase text-secondary"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{
@@ -908,7 +907,7 @@ function HeroSection() {
           </MotionSpan>
 
           <MotionDiv
-            className="flex flex-col items-center justify-center text-center gap-1 text-[#565f44] relative mt-4"
+            className="flex flex-col items-center justify-center text-center gap-1 text-secondary relative mt-4"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{
@@ -917,9 +916,15 @@ function HeroSection() {
               ease: 'easeOut',
             }}
           >
-            <span className="capitalize text-5xl font-bold font-alex-brush">sarah</span>
-            <span className="capitalize text-5xl font-bold font-alex-brush">&</span>
-            <span className="capitalize text-5xl font-bold font-alex-brush">deffin</span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">
+              sarah
+            </span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">
+              &
+            </span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">
+              deffin
+            </span>
           </MotionDiv>
         </MotionDiv>
       </div>
@@ -1034,7 +1039,7 @@ function App() {
       audioRef.current.volume = 0.55
     }
 
-    audioRef.current.play().catch(() => { })
+    audioRef.current.play().catch(() => {})
     setIsInvitationOpen(true)
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }))
   }
