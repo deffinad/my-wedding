@@ -165,12 +165,14 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
           className="mb-8 w-28"
         />
 
-        <div className="flex flex-col gap-2">
-          <span className="uppercase tracking-[0.2em] text-[#565f44]">
-            You're invited to
-          </span>
-          <span className="uppercase text-[#565f44]">the wedding of</span>
-          <span className="uppercase text-[#565f44] text-3xl font-bold">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1">
+            <span className="uppercase tracking-[0.2em] text-[#565f44]">
+              You're invited to
+            </span>
+            <span className="uppercase text-[#565f44]">the wedding of</span>
+          </div>
+          <span className="capitalize text-[#565f44] text-5xl font-bold font-alex-brush">
             Deffin & Sarah
           </span>
         </div>
@@ -234,7 +236,13 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
   )
 }
 
-function WeddingEventsItem({ time, title, description, reminder, align = 'left' }) {
+function WeddingEventsItem({
+  time,
+  title,
+  description,
+  reminder,
+  align = 'left',
+}) {
   return (
     <>
       {align === 'right' && <div className="col-span-4"></div>}
@@ -602,7 +610,7 @@ function QuoteSection() {
           animate={isQuoteDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{ duration: 0.55, ease: 'easeOut' }}
         >
-          Ar-rum : 21
+          QS. Ar-rum : 21
         </MotionSpan>
       </div>
       <MotionImg
@@ -667,7 +675,11 @@ function SaveTheDateSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ delay: 0.15, duration: 0.65, ease: 'easeOut' }}
       >
-        Join us as we begin our forever. Save the date for <span className="font-semibold">July 18th, 2026, from 9:00 AM to 12:00 PM</span>, and celebrate this joyful occasion with our families
+        Join us as we begin our forever. Save the date for{' '}
+        <span className="font-semibold">
+          July 18th, 2026, from 9:00 AM to 12:00 PM
+        </span>
+        , and celebrate this joyful occasion with our families
       </MotionP>
 
       <MotionDiv
@@ -905,9 +917,9 @@ function HeroSection() {
               ease: 'easeOut',
             }}
           >
-            <span className="uppercase text-4xl font-bold">deffin</span>
-            <span className="uppercase text-4xl font-bold">&</span>
-            <span className="uppercase text-4xl font-bold">sarah</span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">deffin</span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">&</span>
+            <span className="capitalize text-5xl font-bold font-alex-brush">sarah</span>
           </MotionDiv>
         </MotionDiv>
       </div>

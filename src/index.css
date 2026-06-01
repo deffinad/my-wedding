@@ -2,7 +2,7 @@
 
 :root {
   font-family:
-    'DM Sans',
+    'Google Sans',
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -39,4 +39,21 @@ select {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+@layer utilities {
+  .font-google-sans {
+    font-family:
+      'Google Sans',
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+  }
+
+  .font-alex-brush {
+    font-family: 'Alex Brush', cursive;
+  }
 }
