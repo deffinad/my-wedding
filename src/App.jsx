@@ -1164,7 +1164,7 @@ function HeroSection({ t }) {
 
 function App() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
-  const [language, setLanguage] = useState('en')
+  const [language, setLanguage] = useState('id')
   const audioRef = useRef(null)
   const t = translations[language]
   const inviteName =
