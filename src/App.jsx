@@ -13,6 +13,7 @@ const MotionDiv = motion.div
 const MotionSpan = motion.span
 const MotionP = motion.p
 const MotionPath = motion.path
+const MotionAnchor = motion.a
 const HERO_INTRO_DURATION = 1.2
 const INVITATION_REVEAL_DELAY = 2.2
 const INVITATION_REVEAL_DURATION = 1.2
@@ -252,7 +253,7 @@ function WeddingEventsItem({
       >
         <span className="text-lg font-light text-primary">{time}</span>
         <span className="text-xl font-semibold text-primary">{title}</span>
-        <p className='text-primary'>{description}</p>
+        <p className="text-primary">{description}</p>
         {reminder && <span className="text-xs text-primary">{reminder}</span>}
       </div>
 
@@ -374,17 +375,21 @@ function LocationSection() {
             src={'/assets/images/location1.webp'}
             className={'w-full h-full object-cover rounded-2xl'}
           />
-          <MotionDiv
+          <MotionAnchor
+            href="https://maps.app.goo.gl/djXKyz25nxJE5LEr9"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full w-18 h-18 bg-accent flex items-center justify-center text-center text-white absolute -bottom-8 right-0"
             style={{
               x: locationButtonX,
               opacity: locationButtonOpacity,
             }}
+            aria-label="See the location on Google Maps"
           >
             <span className="text-sm font-semibold capitalize leading-4">
               See the location
             </span>
-          </MotionDiv>
+          </MotionAnchor>
         </div>
       </MotionDiv>
 
@@ -462,7 +467,9 @@ function RsvpSection({ maxPerson }) {
       >
         <div className="relative z-10 flex flex-col items-center text-center gap-2">
           <span className="text-3xl font-semibold text-primary">RSVP</span>
-          <p className="text-primary">Please let us know if you can celebrate with us</p>
+          <p className="text-primary">
+            Please let us know if you can celebrate with us
+          </p>
         </div>
 
         <form className="relative z-10 grid gap-4">
@@ -692,10 +699,14 @@ function SaveTheDateSection() {
             key={item.day}
             className="flex w-12 shrink-0 flex-col items-center gap-4"
           >
-            <span className="text-lg font-semibold text-primary">{item.day}</span>
+            <span className="text-lg font-semibold text-primary">
+              {item.day}
+            </span>
             {item.active ? (
               <div className="relative flex min-h-32 w-12 justify-center">
-                <span className="relative z-10 text-lg text-primary">{item.date}</span>
+                <span className="relative z-10 text-lg text-primary">
+                  {item.date}
+                </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 58 100"
