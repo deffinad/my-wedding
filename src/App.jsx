@@ -43,6 +43,143 @@ const enterAnimations = {
   },
 }
 
+const translations = {
+  en: {
+    languageLabel: 'Change language',
+    dear: 'dear',
+    invitedTo: "You're invited to",
+    weddingOf: 'the wedding of',
+    openInvitation: 'Open Invitation',
+    invitationNote:
+      '* Please do not share this invitation until the day of the wedding.',
+    invitationValid: 'This invitation is valid for',
+    person: 'person',
+    akadTitle: 'Akad Nikah',
+    akadDescription: "The sacred union of two souls under God's blessing",
+    familyOnly: '*Only for family and close friends',
+    receptionTitle: 'Wedding Reception',
+    receptionDescription: 'Celebrate our joy and new life together',
+    photoTitle: 'Photo Session',
+    photoDescription: "Let's freeze these beautiful moments forever",
+    seeLocation: 'See the location',
+    mapsAria: 'See the location on Google Maps',
+    venueSubtitle: 'Resto, Coffee, and Events',
+    dresscode: 'Dresscode',
+    rsvpIntro: 'Please let us know if you can celebrate with us',
+    name: 'Name',
+    namePlaceholder: 'Your name',
+    attendance: 'Attendance',
+    attend: 'Will attend',
+    unableAttend: 'Unable to attend',
+    wishes: 'Wishes',
+    wishesPlaceholder: 'Write your wishes',
+    sendRsvp: 'Send RSVP',
+    footer: 'from us with love',
+    quote:
+      '"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."',
+    saveDateTitle: 'Save the date',
+    saveDateIntro: 'Join us as we begin our forever. Save the date for',
+    saveDateTime: 'July 18th, 2026, from 9:00 AM to 12:00 PM',
+    saveDateOutro: ', and celebrate this joyful occasion with our families',
+    dontForget: "Don't Forget!",
+    calendarDays: {
+      Mon: 'Mon',
+      Tue: 'Tue',
+      Wed: 'Wed',
+      Thu: 'Thu',
+      Fri: 'Fri',
+      Sat: 'Sat',
+      Sun: 'Sun',
+    },
+    story:
+      'It started with a chance meeting and a smile that was hard to forget. Two hearts found each other in the most unexpected moment, and from that day on, every season felt like a gift. Today, we choose each other - for every tomorrow to come.',
+  },
+  id: {
+    languageLabel: 'Ganti bahasa',
+    dear: 'kepada',
+    invitedTo: 'Anda diundang ke',
+    weddingOf: 'pernikahan',
+    openInvitation: 'Buka Undangan',
+    invitationNote:
+      '* Mohon untuk tidak membagikan undangan ini sampai hari pernikahan.',
+    invitationValid: 'Undangan ini berlaku untuk',
+    person: 'orang',
+    akadTitle: 'Akad Nikah',
+    akadDescription: 'Penyatuan dua hati dalam ikatan suci atas restu Allah',
+    familyOnly: '*Khusus keluarga dan sahabat terdekat',
+    receptionTitle: 'Resepsi Pernikahan',
+    receptionDescription: 'Rayakan kebahagiaan dan awal kehidupan baru kami',
+    photoTitle: 'Sesi Foto',
+    photoDescription: 'Mari abadikan momen indah ini bersama',
+    seeLocation: 'Lihat lokasi',
+    mapsAria: 'Lihat lokasi di Google Maps',
+    venueSubtitle: 'Resto, Coffee, dan Events',
+    dresscode: 'Dresscode',
+    rsvpIntro: 'Mohon konfirmasi kehadiran Anda untuk merayakan bersama kami',
+    name: 'Nama',
+    namePlaceholder: 'Nama Anda',
+    attendance: 'Kehadiran',
+    attend: 'Akan hadir',
+    unableAttend: 'Tidak dapat hadir',
+    wishes: 'Ucapan',
+    wishesPlaceholder: 'Tulis ucapan Anda',
+    sendRsvp: 'Kirim RSVP',
+    footer: 'dari kami dengan cinta',
+    quote:
+      '"Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."',
+    saveDateTitle: 'Simpan tanggal',
+    saveDateIntro: 'Temani kami memulai kisah selamanya. Simpan tanggal',
+    saveDateTime: '18 Juli 2026, pukul 09.00 sampai 12.00 WIB',
+    saveDateOutro: ', dan rayakan hari bahagia ini bersama keluarga kami',
+    dontForget: 'Jangan lupa!',
+    calendarDays: {
+      Mon: 'Sen',
+      Tue: 'Sel',
+      Wed: 'Rab',
+      Thu: 'Kam',
+      Fri: 'Jum',
+      Sat: 'Sab',
+      Sun: 'Min',
+    },
+    story:
+      'Semuanya bermula dari pertemuan sederhana dan senyum yang sulit dilupakan. Dua hati saling menemukan di momen yang tak terduga, lalu sejak hari itu setiap musim terasa seperti anugerah. Hari ini, kami memilih satu sama lain - untuk setiap esok yang akan datang.',
+  },
+}
+
+function LanguageToggle({ language, onChange, label }) {
+  return (
+    <MotionDiv
+      className="fixed right-4 top-4 z-50 rounded-full border border-white/70 bg-white/75 p-1 shadow-lg shadow-secondary/15 backdrop-blur-md"
+      initial={{ opacity: 0, y: -16, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.45, ease: 'easeOut' }}
+      role="group"
+      aria-label={label}
+    >
+      <div className="relative grid grid-cols-2 gap-1">
+        {['en', 'id'].map((item) => (
+          <button
+            key={item}
+            type="button"
+            onClick={() => onChange(item)}
+            className={`relative z-10 h-9 min-w-11 rounded-full px-3 text-xs font-semibold uppercase transition ${
+              language === item ? 'text-white' : 'text-secondary'
+            }`}
+            aria-pressed={language === item}
+          >
+            {item}
+          </button>
+        ))}
+        <MotionSpan
+          className="absolute bottom-0 top-0 z-0 w-[calc(50%-2px)] rounded-full bg-secondary"
+          animate={{ x: language === 'en' ? 0 : 'calc(100% + 4px)' }}
+          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+        />
+      </div>
+    </MotionDiv>
+  )
+}
+
 function SwayImage({
   src,
   className,
@@ -111,6 +248,9 @@ function TypewriterText({ text, className, speed = 35, onComplete }) {
   const hasCompletedRef = useRef(false)
 
   useEffect(() => {
+    setVisibleText('')
+    hasCompletedRef.current = false
+
     if (!isInView) {
       return undefined
     }
@@ -144,7 +284,7 @@ function TypewriterText({ text, className, speed = 35, onComplete }) {
   )
 }
 
-function OpeningSection({ onOpen, inviteName, maxPerson }) {
+function OpeningSection({ onOpen, inviteName, maxPerson, t }) {
   return (
     <section className="relative min-h-svh w-full overflow-hidden touch-pan-y">
       <StaticDecorImage
@@ -154,7 +294,7 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
 
       <div className="absolute bottom-0 left-1/2 z-10 flex h-[85vh] w-[90vw] -translate-x-1/2 flex-col gap-4 items-center justify-center rounded-[100%_100%_0_0/70%_70%_0_0] bg-white/70 p-6 pb-14 text-center">
         <div className="flex flex-col">
-          <span className="uppercase text-secondary">dear</span>
+          <span className="uppercase text-secondary">{t.dear}</span>
           <span className="uppercase text-secondary font-semibold">
             {inviteName}
           </span>
@@ -169,9 +309,9 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <span className="uppercase tracking-[0.2em] text-secondary">
-              You're invited to
+              {t.invitedTo}
             </span>
-            <span className="uppercase text-secondary">the wedding of</span>
+            <span className="uppercase text-secondary">{t.weddingOf}</span>
           </div>
           <span className="capitalize text-secondary text-5xl font-bold font-alex-brush">
             Sarah & Deffin
@@ -183,12 +323,11 @@ function OpeningSection({ onOpen, inviteName, maxPerson }) {
           onClick={onOpen}
           className="mt-10 rounded-full bg-secondary px-8 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-lg shadow-secondary/20 transition duration-300 active:scale-95"
         >
-          Open Invitation
+          {t.openInvitation}
         </button>
 
         <span className="absolute bottom-6 left-1/2 w-[min(100%-32px,420px)] -translate-x-1/2 text-xs leading-5 text-gray-500">
-          * Please do not share this invitation until the day of the wedding.
-          This invitation is valid for {maxPerson} person
+          {t.invitationNote} {t.invitationValid} {maxPerson} {t.person}
         </span>
       </div>
 
@@ -262,7 +401,7 @@ function WeddingEventsItem({
   )
 }
 
-function WeddingEventsSection() {
+function WeddingEventsSection({ t }) {
   const ref = useRef(null)
   const pathRef = useRef(null)
   const [markerPoint, setMarkerPoint] = useState({ x: 18, y: 8 })
@@ -321,31 +460,31 @@ function WeddingEventsSection() {
       <section className="relative z-10 grid grid-cols-12 gap-8 px-4 py-12">
         <WeddingEventsItem
           time="09.00"
-          title="Akad Nikah"
-          description="The sacred union of two souls under God's blessing"
+          title={t.akadTitle}
+          description={t.akadDescription}
           align="left"
-          reminder={'*Only for family and close friends'}
+          reminder={t.familyOnly}
         />
         <WeddingEventsItem
           time="10.10"
-          title="Wedding Reception"
-          description="Celebrate our joy and new life together"
+          title={t.receptionTitle}
+          description={t.receptionDescription}
           align="right"
         />
         <WeddingEventsItem
           time="11.30"
-          title="Photo Session"
-          description="Let's freeze these beautiful moments forever"
+          title={t.photoTitle}
+          description={t.photoDescription}
           align="left"
         />
       </section>
 
-      <LocationSection />
+      <LocationSection t={t} />
     </div>
   )
 }
 
-function LocationSection() {
+function LocationSection({ t }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.35 })
   const { scrollYProgress } = useScroll({
@@ -384,10 +523,10 @@ function LocationSection() {
               x: locationButtonX,
               opacity: locationButtonOpacity,
             }}
-            aria-label="See the location on Google Maps"
+            aria-label={t.mapsAria}
           >
             <span className="text-sm font-semibold capitalize leading-4">
-              See the location
+              {t.seeLocation}
             </span>
           </MotionAnchor>
         </div>
@@ -402,7 +541,7 @@ function LocationSection() {
         <div className="flex flex-col">
           <span className="text-xl font-semibold text-primary">NUU JII</span>
           <span className="text-xl font-semibold text-primary">
-            Resto, Coffee, and Events
+            {t.venueSubtitle}
           </span>
         </div>
 
@@ -415,7 +554,7 @@ function LocationSection() {
   )
 }
 
-function DresscodeSection() {
+function DresscodeSection({ t }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.45 })
   const colors = ['bg-secondary', 'bg-accent', 'bg-orange-100', 'bg-stone-50']
@@ -428,7 +567,9 @@ function DresscodeSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 48 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <span className="text-3xl font-semibold text-primary">Dresscode</span>
+        <span className="text-3xl font-semibold text-primary">
+          {t.dresscode}
+        </span>
         <div className="flex items-center gap-4">
           {colors.map((color, index) => (
             <MotionDiv
@@ -453,7 +594,7 @@ function DresscodeSection() {
   )
 }
 
-function RsvpSection({ maxPerson }) {
+function RsvpSection({ maxPerson, t }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.35 })
 
@@ -467,48 +608,45 @@ function RsvpSection({ maxPerson }) {
       >
         <div className="relative z-10 flex flex-col items-center text-center gap-2">
           <span className="text-3xl font-semibold text-primary">RSVP</span>
-          <p className="text-primary">
-            Please let us know if you can celebrate with us
-          </p>
+          <p className="text-primary">{t.rsvpIntro}</p>
         </div>
 
         <form className="relative z-10 grid gap-4">
           <label className="grid gap-2 text-left text-sm font-semibold text-primary">
-            Name
+            {t.name}
             <input
               type="text"
-              placeholder="Your name"
+              placeholder={t.namePlaceholder}
               className="rounded-xl border border-secondary/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-accent"
             />
           </label>
 
           <label className="grid gap-2 text-left text-sm font-semibold text-primary">
-            Attendance
+            {t.attendance}
             <select className="rounded-xl border border-secondary/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-accent">
-              <option>Will attend</option>
-              <option>Unable to attend</option>
+              <option>{t.attend}</option>
+              <option>{t.unableAttend}</option>
             </select>
           </label>
 
           <label className="grid gap-2 text-left text-sm font-semibold text-primary">
-            Wishes
+            {t.wishes}
             <textarea
               rows="4"
-              placeholder="Write your wishes"
+              placeholder={t.wishesPlaceholder}
               className="resize-none rounded-xl border border-secondary/25 font-normal! bg-white/85 px-4 py-3 outline-none transition focus:border-accent"
             />
           </label>
 
           <span className="text-sm text-gray-500 font-semibold">
-            * Please do not share this invitation until the day of the wedding.
-            This invitation is valid for {maxPerson} person
+            {t.invitationNote} {t.invitationValid} {maxPerson} {t.person}
           </span>
 
           <button
             type="submit"
             className="rounded-full bg-secondary px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition active:scale-95"
           >
-            Send RSVP
+            {t.sendRsvp}
           </button>
         </form>
 
@@ -550,7 +688,7 @@ function RsvpSection({ maxPerson }) {
   )
 }
 
-function FooterSection() {
+function FooterSection({ t }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.45 })
 
@@ -566,7 +704,7 @@ function FooterSection() {
           <span className="font-bold text-4xl capitalize font-alex-brush">
             Sarah & Deffin
           </span>
-          <span className="font-light capitalize">from us with love</span>
+          <span className="font-light capitalize">{t.footer}</span>
         </div>
 
         <div className="absolute -bottom-20 w-full left-1/2 -translate-x-1/2 flex items-center justify-center">
@@ -590,9 +728,14 @@ function FooterSection() {
   )
 }
 
-function QuoteSection() {
+function QuoteSection({ t }) {
   const [isQuoteDone, setIsQuoteDone] = useState(false)
   const hasCompleted = useRef(false)
+
+  useEffect(() => {
+    hasCompleted.current = false
+    setIsQuoteDone(false)
+  }, [t.quote])
 
   const handleComplete = useCallback(() => {
     if (!hasCompleted.current) {
@@ -605,8 +748,9 @@ function QuoteSection() {
     <section className="relative overflow-hidden">
       <div className="flex items-center justify-center text-center min-h-[60vh] p-4 flex-col gap-4 relative z-10">
         <TypewriterText
+          key={t.quote}
           className="text-xl italic text-accent"
-          text='"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."'
+          text={t.quote}
           speed={50}
           onComplete={handleComplete}
         />
@@ -643,7 +787,7 @@ const calendarDays = [
   { day: 'Sun', date: '19' },
 ]
 
-function SaveTheDateSection() {
+function SaveTheDateSection({ t }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.45 })
   const [isLoveDone, setIsLoveDone] = useState(false)
@@ -673,7 +817,7 @@ function SaveTheDateSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
         transition={{ duration: 0.65, ease: 'easeOut' }}
       >
-        Save the date
+        {t.saveDateTitle}
       </MotionSpan>
       <MotionP
         className="max-w-[34rem] leading-6 text-primary"
@@ -681,11 +825,9 @@ function SaveTheDateSection() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ delay: 0.15, duration: 0.65, ease: 'easeOut' }}
       >
-        Join us as we begin our forever. Save the date for{' '}
-        <span className="font-semibold">
-          July 18th, 2026, from 9:00 AM to 12:00 PM
-        </span>
-        , and celebrate this joyful occasion with our families
+        {t.saveDateIntro}{' '}
+        <span className="font-semibold">{t.saveDateTime}</span>
+        {t.saveDateOutro}
       </MotionP>
 
       <MotionDiv
@@ -700,7 +842,7 @@ function SaveTheDateSection() {
             className="flex w-12 shrink-0 flex-col items-center gap-4"
           >
             <span className="text-lg font-semibold text-primary">
-              {item.day}
+              {t.calendarDays[item.day]}
             </span>
             {item.active ? (
               <div className="relative flex min-h-32 w-12 justify-center">
@@ -768,7 +910,7 @@ function SaveTheDateSection() {
                   }
                   transition={{ duration: 0.45, ease: 'easeOut' }}
                 >
-                  Don't Forget!
+                  {t.dontForget}
                 </MotionSpan>
               </div>
             ) : (
@@ -781,7 +923,7 @@ function SaveTheDateSection() {
   )
 }
 
-function OurStorySection() {
+function OurStorySection({ t }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.45 })
   const { scrollYProgress } = useScroll({
@@ -830,10 +972,7 @@ function OurStorySection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
             transition={{ delay: 0.3, duration: 0.75, ease: 'easeOut' }}
           >
-            It started with a chance meeting and a smile that was hard to
-            forget. Two hearts found each other in the most unexpected moment,
-            and from that day on, every season felt like a gift. Today, we
-            choose each other — for every tomorrow to come.
+            {t.story}
           </MotionP>
 
           <MotionSpan
@@ -842,7 +981,7 @@ function OurStorySection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
             transition={{ delay: 0.55, duration: 0.65, ease: 'easeOut' }}
           >
-            <span className="font-alex-brush">— Sarah & Deffin —</span>
+            <span className="font-alex-brush">- Sarah & Deffin -</span>
           </MotionSpan>
         </MotionDiv>
       </div>
@@ -859,7 +998,7 @@ function OurStorySection() {
   )
 }
 
-function HeroSection() {
+function HeroSection({ t }) {
   return (
     <section className="relative min-h-svh w-full overflow-hidden touch-pan-y">
       <MotionImg
@@ -914,7 +1053,7 @@ function HeroSection() {
               ease: 'easeOut',
             }}
           >
-            the wedding of
+            {t.weddingOf}
           </MotionSpan>
 
           <MotionDiv
@@ -1035,7 +1174,9 @@ function HeroSection() {
 
 function App() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
+  const [language, setLanguage] = useState('en')
   const audioRef = useRef(null)
+  const t = translations[language]
   const inviteName =
     new URLSearchParams(window.location.search).get('to')?.trim() ||
     'Tamu Undangan'
@@ -1058,10 +1199,16 @@ function App() {
   if (!isInvitationOpen) {
     return (
       <div className="min-h-svh w-full overflow-x-clip touch-pan-y">
+        <LanguageToggle
+          language={language}
+          onChange={setLanguage}
+          label={t.languageLabel}
+        />
         <OpeningSection
           onOpen={handleOpenInvitation}
           inviteName={inviteName}
           maxPerson={maxPerson}
+          t={t}
         />
       </div>
     )
@@ -1069,14 +1216,19 @@ function App() {
 
   return (
     <div className="min-h-svh w-full overflow-x-clip touch-pan-y">
-      <HeroSection />
-      <QuoteSection />
-      <SaveTheDateSection />
-      <WeddingEventsSection />
-      <OurStorySection />
-      <DresscodeSection />
-      <RsvpSection maxPerson={maxPerson} />
-      <FooterSection />
+      <LanguageToggle
+        language={language}
+        onChange={setLanguage}
+        label={t.languageLabel}
+      />
+      <HeroSection t={t} />
+      <QuoteSection t={t} />
+      <SaveTheDateSection t={t} />
+      <WeddingEventsSection t={t} />
+      <OurStorySection t={t} />
+      <DresscodeSection t={t} />
+      <RsvpSection maxPerson={maxPerson} t={t} />
+      <FooterSection t={t} />
     </div>
   )
 }
