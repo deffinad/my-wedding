@@ -19,6 +19,8 @@ const HERO_INTRO_DURATION = 1.2
 const INVITATION_REVEAL_DELAY = 2.2
 const INVITATION_REVEAL_DURATION = 1.2
 const HERO_SCALE_DURATION = INVITATION_REVEAL_DELAY + INVITATION_REVEAL_DURATION
+const DEFAULT_AUDIO_SRC = '/assets/audios/sempurna.mp3'
+const PARENTS_AUDIO_SRC = '/assets/audios/master-nasif.mp3'
 const defaultSway = {
   style: { transformOrigin: '50% 100%' },
   rotate: [-2.5, 2.5, -2.5],
@@ -1174,9 +1176,15 @@ function App() {
   const maxPerson =
     new URLSearchParams(window.location.search).get('max')?.trim() || '1'
 
+  const audience = new URLSearchParams(window.location.search)
+    .get('audience')
+    ?.trim()
+  const audioSrc =
+    audience === 'parents' ? PARENTS_AUDIO_SRC : DEFAULT_AUDIO_SRC
+
   const handleOpenInvitation = () => {
     if (!audioRef.current) {
-      audioRef.current = new Audio('/assets/audios/sempurna.mp3')
+      audioRef.current = new Audio(audioSrc)
       audioRef.current.loop = true
       audioRef.current.volume = 0.55
     }
