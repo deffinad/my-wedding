@@ -1,4 +1,5 @@
 import './App.css'
+import translations from './lang.json'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   motion,
@@ -40,109 +41,6 @@ const enterAnimations = {
     initial: { y: 72, opacity: 0 },
     animate: { y: [72, -10, 0], opacity: 1 },
     transition: { duration: 0.85, ease: 'easeOut' },
-  },
-}
-
-const translations = {
-  en: {
-    languageLabel: 'Change language',
-    dear: 'dear',
-    invitedTo: "You're invited to",
-    weddingOf: 'the wedding of',
-    openInvitation: 'Open Invitation',
-    invitationNote:
-      '* Please do not share this invitation until the day of the wedding.',
-    invitationValid: 'This invitation is valid for',
-    person: 'person',
-    akadTitle: 'Akad Nikah',
-    akadDescription: "The sacred union of two souls under God's blessing",
-    familyOnly: '*Only for family and close friends',
-    receptionTitle: 'Wedding Reception',
-    receptionDescription: 'Celebrate our joy and new life together',
-    photoTitle: 'Photo Session',
-    photoDescription: "Let's freeze these beautiful moments forever",
-    seeLocation: 'See the location',
-    mapsAria: 'See the location on Google Maps',
-    venueSubtitle: 'Resto, Coffee, and Events',
-    dresscode: 'Dresscode',
-    rsvpIntro: 'Please let us know if you can celebrate with us',
-    name: 'Name',
-    namePlaceholder: 'Your name',
-    attendance: 'Attendance',
-    attend: 'Will attend',
-    unableAttend: 'Unable to attend',
-    wishes: 'Wishes',
-    wishesPlaceholder: 'Write your wishes',
-    sendRsvp: 'Send RSVP',
-    footer: 'from us with love',
-    quote:
-      '"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy."',
-    saveDateTitle: 'Save the date',
-    saveDateIntro: 'Join us as we begin our forever. Save the date for',
-    saveDateTime: 'July 18th, 2026, from 9:00 AM to 12:00 PM',
-    saveDateOutro: ', and celebrate this joyful occasion with our families',
-    dontForget: "Don't Forget!",
-    calendarDays: {
-      Mon: 'Mon',
-      Tue: 'Tue',
-      Wed: 'Wed',
-      Thu: 'Thu',
-      Fri: 'Fri',
-      Sat: 'Sat',
-      Sun: 'Sun',
-    },
-    story:
-      'It started with a chance meeting and a smile that was hard to forget. Two hearts found each other in the most unexpected moment, and from that day on, every season felt like a gift. Today, we choose each other - for every tomorrow to come.',
-  },
-  id: {
-    languageLabel: 'Ganti bahasa',
-    dear: 'kepada',
-    invitedTo: 'Anda diundang ke',
-    weddingOf: 'pernikahan',
-    openInvitation: 'Buka Undangan',
-    invitationNote:
-      '* Mohon untuk tidak membagikan undangan ini sampai hari pernikahan.',
-    invitationValid: 'Undangan ini berlaku untuk',
-    person: 'orang',
-    akadTitle: 'Akad Nikah',
-    akadDescription: 'Penyatuan dua hati dalam ikatan suci atas restu Allah',
-    familyOnly: '*Khusus keluarga dan sahabat terdekat',
-    receptionTitle: 'Resepsi Pernikahan',
-    receptionDescription: 'Rayakan kebahagiaan dan awal kehidupan baru kami',
-    photoTitle: 'Sesi Foto',
-    photoDescription: 'Mari abadikan momen indah ini bersama',
-    seeLocation: 'Lihat lokasi',
-    mapsAria: 'Lihat lokasi di Google Maps',
-    venueSubtitle: 'Resto, Coffee, dan Events',
-    dresscode: 'Dresscode',
-    rsvpIntro: 'Mohon konfirmasi kehadiran Anda untuk merayakan bersama kami',
-    name: 'Nama',
-    namePlaceholder: 'Nama Anda',
-    attendance: 'Kehadiran',
-    attend: 'Akan hadir',
-    unableAttend: 'Tidak dapat hadir',
-    wishes: 'Ucapan',
-    wishesPlaceholder: 'Tulis ucapan Anda',
-    sendRsvp: 'Kirim RSVP',
-    footer: 'dari kami dengan cinta',
-    quote:
-      '"Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."',
-    saveDateTitle: 'Simpan tanggal',
-    saveDateIntro: 'Temani kami memulai kisah selamanya. Simpan tanggal',
-    saveDateTime: '18 Juli 2026, pukul 09.00 sampai 12.00 WIB',
-    saveDateOutro: ', dan rayakan hari bahagia ini bersama keluarga kami',
-    dontForget: 'Jangan lupa!',
-    calendarDays: {
-      Mon: 'Sen',
-      Tue: 'Sel',
-      Wed: 'Rab',
-      Thu: 'Kam',
-      Fri: 'Jum',
-      Sat: 'Sab',
-      Sun: 'Min',
-    },
-    story:
-      'Semuanya bermula dari pertemuan sederhana dan senyum yang sulit dilupakan. Dua hati saling menemukan di momen yang tak terduga, lalu sejak hari itu setiap musim terasa seperti anugerah. Hari ini, kami memilih satu sama lain - untuk setiap esok yang akan datang.',
   },
 }
 
@@ -745,8 +643,8 @@ function QuoteSection({ t }) {
   }, [])
 
   return (
-    <section className="relative overflow-hidden">
-      <div className="flex items-center justify-center text-center min-h-[60vh] p-4 flex-col gap-4 relative z-10">
+    <section className="overflow-hidden">
+      <div className="flex min-h-[70vh] flex-col items-center justify-center gap-4 p-4 text-center">
         <TypewriterText
           key={t.quote}
           className="text-xl italic text-accent"
@@ -762,17 +660,109 @@ function QuoteSection({ t }) {
         >
           QS. Ar-rum : 21
         </MotionSpan>
+        <MotionImg
+          src="/assets/images/melati5.webp"
+          alt=""
+          aria-hidden="true"
+          draggable="false"
+          className="decorative-media mt-6 w-[200px]"
+          initial={{ opacity: 0, y: 80 }}
+          animate={isQuoteDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+        />
       </div>
-      <MotionImg
-        src="/assets/images/melati5.webp"
-        alt=""
-        aria-hidden="true"
-        draggable="false"
-        className="decorative-media absolute bottom-0 left-1/2 w-[200px] -translate-x-1/2"
-        initial={{ opacity: 0, y: 120 }}
-        animate={isQuoteDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 120 }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
-      />
+    </section>
+  )
+}
+
+function InvitationWaveCardSection({ t }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.35 })
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 82%', 'center center'],
+  })
+  const straightCardPath =
+    'M20 24 C44 24 91 24 115 24 C143 24 170 24 198 24 C222 24 276 24 300 24 C300 50 300 85 300 118 C300 148 300 170 300 200 C300 233 300 260 300 292 C300 322 300 344 300 374 C300 407 300 434 300 466 C300 489 300 522 300 548 C275 548 249 548 224 548 C195 548 166 548 137 548 C112 548 45 548 20 548 C20 522 20 489 20 466 C20 434 20 407 20 374 C20 344 20 322 20 292 C20 260 20 233 20 200 C20 170 20 148 20 118 C20 85 20 50 20 24 Z'
+  const waveCardPath =
+    'M44 36 C68 18 91 37 115 28 C143 18 170 18 198 28 C222 37 245 18 276 36 C304 53 312 85 300 118 C289 148 289 170 303 200 C318 233 318 260 303 292 C289 322 289 344 303 374 C318 407 318 434 300 466 C287 489 288 511 300 540 C275 557 249 534 224 545 C195 558 166 558 137 545 C112 534 86 557 20 540 C32 511 33 489 20 466 C2 434 2 407 17 374 C31 344 31 322 17 292 C2 260 2 233 17 200 C31 170 31 148 20 118 C8 85 16 53 44 36 Z'
+  const cardPath = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [straightCardPath, waveCardPath]
+  )
+
+  return (
+    <section
+      ref={ref}
+      className="flex min-h-[74vh] items-center justify-center overflow-hidden bg-secondary px-4 py-14"
+    >
+      <MotionDiv
+        className="relative aspect-[320/560] w-full"
+        initial={{ opacity: 0, y: 48, scale: 0.96 }}
+        animate={
+          isInView
+            ? { opacity: 1, y: 0, scale: 1 }
+            : { opacity: 0, y: 48, scale: 0.96 }
+        }
+        transition={{ duration: 0.85, ease: 'easeOut' }}
+      >
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 320 560"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <MotionPath d={cardPath} fill="#fff4e6" />
+          <MotionPath
+            d={cardPath}
+            fill="none"
+            stroke="#ffffff"
+            strokeOpacity="0.55"
+            strokeWidth="2"
+          />
+        </svg>
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-8 text-center text-primary">
+          <MotionDiv
+            className="flex flex-col items-center gap-3"
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ delay: 0.25, duration: 0.75, ease: 'easeOut' }}
+          >
+            <span className="font-alex-brush text-5xl leading-none text-secondary">
+              {t.brideName}
+            </span>
+            <span className="max-w-[15rem] text-sm leading-6 text-primary/75">
+              {t.brideDescription}
+            </span>
+          </MotionDiv>
+
+          <MotionSpan
+            className="my-8 font-alex-brush text-5xl leading-none text-accent"
+            initial={{ opacity: 0, scale: 0.75 }}
+            animate={
+              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.75 }
+            }
+            transition={{ delay: 0.45, duration: 0.6, ease: 'easeOut' }}
+          >
+            &
+          </MotionSpan>
+
+          <MotionDiv
+            className="flex flex-col items-center gap-3"
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ delay: 0.6, duration: 0.75, ease: 'easeOut' }}
+          >
+            <span className="font-alex-brush text-5xl leading-none text-secondary">
+              {t.groomName}
+            </span>
+            <span className="max-w-[15rem] text-sm leading-6 text-primary/75">
+              {t.groomDescription}
+            </span>
+          </MotionDiv>
+        </div>
+      </MotionDiv>
     </section>
   )
 }
@@ -809,7 +799,7 @@ function SaveTheDateSection({ t }) {
   return (
     <section
       ref={ref}
-      className="flex items-center justify-center text-center p-4 flex-col gap-4"
+      className="flex items-center justify-center text-center px-4 py-14 flex-col gap-4"
     >
       <MotionSpan
         className="text-3xl font-semibold capitalize text-primary"
@@ -951,7 +941,7 @@ function OurStorySection({ t }) {
   return (
     <section ref={ref} className="relative py-10">
       <svg
-        className="absolute left-0 top-0 z-10 h-10 w-full"
+        className="absolute -top-px left-0 z-10 block h-[calc(2.5rem+2px)] w-full"
         viewBox="0 0 100 40"
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -987,7 +977,7 @@ function OurStorySection({ t }) {
       </div>
 
       <svg
-        className="absolute bottom-0 left-0 z-10 h-10 w-full"
+        className="absolute -bottom-px left-0 z-10 block h-[calc(2.5rem+2px)] w-full"
         viewBox="0 0 100 40"
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -1223,6 +1213,7 @@ function App() {
       />
       <HeroSection t={t} />
       <QuoteSection t={t} />
+      <InvitationWaveCardSection t={t} />
       <SaveTheDateSection t={t} />
       <WeddingEventsSection t={t} />
       <OurStorySection t={t} />
