@@ -924,18 +924,20 @@ function OurStorySection({ t }) {
   })
   const topDividerPath = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.85, 1],
     [
       'M0 40 L0 22 C25 -6 75 -6 100 22 L100 40 Z', // melengkung ke atas
       'M0 40 L0 40 C25 40 75 40 100 40 L100 40 Z', // flat
+      'M0 40 L0 40 C25 40 75 40 100 40 L100 40 Z', // tahan flat
     ]
   )
 
   const bottomDividerPath = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0, 0.62, 1],
     [
       'M0 0 L0 0 C25 0 75 0 100 0 L100 0 Z', // flat
+      'M0 0 L0 0 C25 0 75 0 100 0 L100 0 Z', // tahan flat
       'M0 0 L0 18 C25 44 75 44 100 18 L100 0 Z', // melengkung ke bawah
     ]
   )
