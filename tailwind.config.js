@@ -2,13 +2,10 @@
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
-    extend: {
-      colors: {
-        primary: '#420D09',
-        secondary: '#565f44',
-        accent: '#f49b5f',
-      },
-    },
+    // Brand colors (primary/secondary/accent) now live as CSS variables in
+    // src/index.css and are exposed to Tailwind via the `@theme inline` block,
+    // so they are shared between the invitation and shadcn components.
+    extend: {},
   },
   plugins: [],
 }
