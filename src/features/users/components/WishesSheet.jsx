@@ -117,7 +117,7 @@ export function WishesSheet({ t }) {
       >
         <SheetHeader className="items-center border-b border-secondary/10 pb-4 text-center">
           <SheetTitle className="flex items-center justify-center gap-2 text-xl text-primary">
-            <MessageCircleHeart className="size-5 text-accent" />
+            <MessageCircleHeart className="size-5 text-accent"/>
             {t.wishesListTitle}
           </SheetTitle>
           <SheetDescription className="text-primary/60">
