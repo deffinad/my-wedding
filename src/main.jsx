@@ -9,7 +9,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <App />
-      <Toaster position="top-center" richColors />
+      <Toaster position="top-center" />
     </BrowserRouter>
   </StrictMode>
 )

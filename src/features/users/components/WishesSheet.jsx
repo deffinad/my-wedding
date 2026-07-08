@@ -117,7 +117,7 @@ export function WishesSheet({ t }) {
       >
         <SheetHeader className="items-center border-b border-secondary/10 pb-4 text-center">
           <SheetTitle className="flex items-center justify-center gap-2 text-xl text-primary">
-            <MessageCircleHeart className="size-5 text-accent"/>
+            <MessageCircleHeart className="size-5 text-accent" />
             {t.wishesListTitle}
           </SheetTitle>
           <SheetDescription className="text-primary/60">
@@ -127,33 +127,37 @@ export function WishesSheet({ t }) {
 
         <div className="flex-1 relative">
           <div className="absolute w-full h-full">
-            <ScrollArea ref={scrollRef} className="w-full h-full">
-              <div className="mx-auto flex max-w-lg flex-col gap-3 px-4 pb-10 pt-4">
-                {isInitialLoading ? (
-                  Array.from({ length: 4 }).map((_, i) => (
-                    <WishSkeleton key={i} />
-                  ))
-                ) : list.length === 0 ? (
-                  <p className="py-12 text-center text-sm text-gray-400">
-                    {t.wishesEmpty}
-                  </p>
-                ) : (
-                  <>
-                    {list.map((item) => (
-                      <WishCard key={item.id} item={item} t={t} />
-                    ))}
-
-                    <div ref={sentinelRef} aria-hidden="true" />
-
-                    {loadingMore && (
-                      <div className="flex justify-center py-2">
-                        <Loader2 className="size-5 animate-spin text-secondary" />
-                      </div>
-                    )}
-                  </>
-                )}
+            {list.length === 0 ? (
+              <div className="h-full w-full flex items-center justify-center">
+                <p className="text-center text-sm text-gray-400">
+                  {t.wishesEmpty}
+                </p>
               </div>
-            </ScrollArea>
+            ) : (
+              <ScrollArea ref={scrollRef} className="w-full h-full">
+                <div className="mx-auto flex max-w-lg flex-col gap-3 px-4 pb-10 pt-4">
+                  {isInitialLoading ? (
+                    Array.from({ length: 4 }).map((_, i) => (
+                      <WishSkeleton key={i} />
+                    ))
+                  ) : (
+                    <>
+                      {list.map((item) => (
+                        <WishCard key={item.id} item={item} t={t} />
+                      ))}
+
+                      <div ref={sentinelRef} aria-hidden="true" />
+
+                      {loadingMore && (
+                        <div className="flex justify-center py-2">
+                          <Loader2 className="size-5 animate-spin text-secondary" />
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </ScrollArea>
+            )}
           </div>
         </div>
       </SheetContent>

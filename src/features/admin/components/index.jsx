@@ -67,9 +67,15 @@ export default function AdminPage() {
         onDelete: async (row) => {
           try {
             await remove(row.id)
-            toast.success('RSVP dihapus.')
+            toast.success('Berhasil dihapus', {
+              description: `RSVP dari "${row.name}" telah dihapus.`,
+            })
           } catch (error) {
-            toast.error(error.message || 'Gagal menghapus RSVP.')
+            toast.error('Uh oh! Terjadi kesalahan', {
+              description:
+                error.message ||
+                'Mohon maaf atas ketidaknyamanan yang Anda alami.',
+            })
           }
         },
       }),
