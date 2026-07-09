@@ -99,7 +99,7 @@ export default function UserPage() {
         <InvitationWaveCardSection t={t} />
         <SaveTheDateSection t={t} />
         <WeddingEventsSection t={t} />
-        <OurStorySection t={t} />
+        {audience !== 'parents' && <OurStorySection t={t} />}
         <DresscodeSection t={t} />
         <RsvpSection maxPerson={maxPerson} inviteName={inviteName} t={t} />
         {audience === 'parents' && <AdabSection t={t} />}
