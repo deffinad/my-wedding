@@ -22,7 +22,7 @@ export function InvitationWaveCardSection({ t }) {
   return (
     <section
       ref={ref}
-      className="flex min-h-[74vh] items-center justify-center overflow-hidden bg-secondary px-4 py-14"
+      className="flex items-center justify-center overflow-hidden bg-secondary px-4 py-14"
     >
       <MotionDiv
         className="relative aspect-[320/560] w-full"

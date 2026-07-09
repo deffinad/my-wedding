@@ -3,7 +3,7 @@ import { MotionDiv, MotionSpan } from '@/features/users/motion'
 export function LanguageToggle({ language, onChange, label }) {
   return (
     <MotionDiv
-      className="absolute right-4 top-4 z-50 rounded-full border border-white/70 bg-white/75 p-1 shadow-lg shadow-secondary/15 backdrop-blur-md"
+      className="fixed z-50 top-4 right-4 md:right-[calc(50vw-224px)] lg:right-4 rounded-full border border-white/70 bg-white/75 p-1 shadow-lg shadow-secondary/15 backdrop-blur-md"
       initial={{ opacity: 0, y: -16, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
