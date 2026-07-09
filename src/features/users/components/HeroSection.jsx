@@ -30,7 +30,7 @@ export function HeroSection({ t }) {
         }}
       />
 
-      <div className="absolute bottom-0 left-1/2 w-[90vw] -translate-x-1/2">
+      <div className="absolute bottom-0 left-1/2 w-[90%] md:max-w-[420px] -translate-x-1/2">
         <MotionDiv
           className="flex h-[85vh] flex-col items-center rounded-[100%_100%_0_0/70%_70%_0_0] bg-white/50 pt-32"
           initial={{ y: '100%' }}

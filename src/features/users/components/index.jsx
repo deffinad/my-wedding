@@ -16,6 +16,7 @@ import { OurStorySection } from '@/features/users/components/OurStorySection'
 import { DresscodeSection } from '@/features/users/components/DresscodeSection'
 import { RsvpSection } from '@/features/users/components/RsvpSection'
 import { FooterSection } from '@/features/users/components/FooterSection'
+import { DesktopCover } from '@/features/users/components/DesktopCover'
 
 export default function UserPage() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
@@ -45,38 +46,44 @@ export default function UserPage() {
 
   if (!isInvitationOpen) {
     return (
-      <div className="min-h-svh w-full overflow-x-clip touch-pan-y">
-        <LanguageToggle
-          language={language}
-          onChange={setLanguage}
-          label={t.languageLabel}
-        />
-        <OpeningSection
-          onOpen={handleOpenInvitation}
-          inviteName={inviteName}
-          maxPerson={maxPerson}
-          t={t}
-        />
+      <div className="min-h-screen w-full bg-[#fbf6ef] overflow-x-hidden flex lg:flex-row">
+        <DesktopCover />
+        <div className="w-full md:max-w-[480px] lg:w-[480px] md:mx-auto lg:mr-0 min-h-screen bg-[#fbf6ef] md:shadow-2xl relative flex flex-col overflow-y-hidden">
+          <LanguageToggle
+            language={language}
+            onChange={setLanguage}
+            label={t.languageLabel}
+          />
+          <OpeningSection
+            onOpen={handleOpenInvitation}
+            inviteName={inviteName}
+            maxPerson={maxPerson}
+            t={t}
+          />
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-svh w-full overflow-x-clip touch-pan-y">
-      <LanguageToggle
-        language={language}
-        onChange={setLanguage}
-        label={t.languageLabel}
-      />
-      <HeroSection t={t} />
-      <QuoteSection t={t} />
-      <InvitationWaveCardSection t={t} />
-      <SaveTheDateSection t={t} />
-      <WeddingEventsSection t={t} />
-      <OurStorySection t={t} />
-      <DresscodeSection t={t} />
-      <RsvpSection maxPerson={maxPerson} inviteName={inviteName} t={t} />
-      <FooterSection t={t} />
+    <div className="min-h-screen w-full bg-[#fbf6ef] overflow-x-hidden flex lg:flex-row">
+      <DesktopCover />
+      <div className="w-full md:max-w-[480px] lg:w-[480px] md:mx-auto lg:mr-0 min-h-screen bg-[#fbf6ef] md:shadow-2xl relative flex flex-col overflow-y-hidden">
+        <LanguageToggle
+          language={language}
+          onChange={setLanguage}
+          label={t.languageLabel}
+        />
+        <HeroSection t={t} />
+        <QuoteSection t={t} />
+        <InvitationWaveCardSection t={t} />
+        <SaveTheDateSection t={t} />
+        <WeddingEventsSection t={t} />
+        <OurStorySection t={t} />
+        <DresscodeSection t={t} />
+        <RsvpSection maxPerson={maxPerson} inviteName={inviteName} t={t} />
+        <FooterSection t={t} />
+      </div>
     </div>
   )
 }

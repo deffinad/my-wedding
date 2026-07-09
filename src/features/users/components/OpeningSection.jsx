@@ -8,7 +8,7 @@ export function OpeningSection({ onOpen, inviteName, maxPerson, t }) {
         className="absolute inset-0 h-full w-full scale-150 object-cover"
       />
 
-      <div className="absolute bottom-0 left-1/2 z-10 flex h-[85vh] w-[90vw] -translate-x-1/2 flex-col gap-4 items-center justify-center rounded-[100%_100%_0_0/70%_70%_0_0] bg-white/70 p-6 pb-14 text-center">
+      <div className="absolute bottom-0 left-1/2 z-10 flex h-[85vh] w-[90%] md:max-w-[420px] -translate-x-1/2 flex-col gap-4 items-center justify-center rounded-[100%_100%_0_0/70%_70%_0_0] bg-white/70 p-6 pb-14 text-center">
         <div className="flex flex-col">
           <span className="uppercase text-secondary">{t.dear}</span>
           <span className="uppercase text-secondary font-semibold">
