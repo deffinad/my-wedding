@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import translations from '@/lang.json'
 import { useLanguageStore } from '@/features/users/store/languageStore'
 import {
@@ -43,6 +43,24 @@ export default function UserPage() {
     setIsInvitationOpen(true)
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }))
   }
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!audioRef.current) return
+      if (document.hidden) {
+        audioRef.current.pause()
+      } else {
+        if (isInvitationOpen) {
+          audioRef.current.play().catch(() => {})
+        }
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [isInvitationOpen])
 
   if (!isInvitationOpen) {
     return (
