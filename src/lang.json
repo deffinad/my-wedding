@@ -60,7 +60,16 @@
       "Sat": "Sat",
       "Sun": "Sun"
     },
-    "story": "It started with a chance meeting and a smile that was hard to forget. Two hearts found each other in the most unexpected moment, and from that day on, every season felt like a gift. Today, we choose each other - for every tomorrow to come."
+    "story": "It started with a chance meeting and a smile that was hard to forget. Two hearts found each other in the most unexpected moment, and from that day on, every season felt like a gift. Today, we choose each other - for every tomorrow to come.",
+    "adabTitle": "Etiquette of Attending",
+    "adabItem1": "Observe eating & drinking etiquette",
+    "adabItem2": "Observe prayer times",
+    "adabItem3": "Pray for the newlyweds",
+    "adabItem4": "Dress modestly and politely",
+    "adabItem5": "Do not take photos without permission",
+    "doaTitle": "Prayer for Newlyweds",
+    "doaTranslation": "\"May Allah bless you and shower His blessings upon you and join you together in goodness.\"",
+    "doaSource": "(Narrated by Abu Dawud no. 2130)"
   },
   "id": {
     "languageLabel": "Ganti bahasa",
@@ -123,6 +132,15 @@
       "Sat": "Sab",
       "Sun": "Min"
     },
-    "story": "Semuanya bermula dari pertemuan sederhana dan senyum yang sulit dilupakan. Dua hati saling menemukan di momen yang tak terduga, lalu sejak hari itu setiap musim terasa seperti anugerah. Hari ini, kami memilih satu sama lain - untuk setiap esok yang akan datang."
+    "story": "Semuanya bermula dari pertemuan sederhana dan senyum yang sulit dilupakan. Dua hati saling menemukan di momen yang tak terduga, lalu sejak hari itu setiap musim terasa seperti anugerah. Hari ini, kami memilih satu sama lain - untuk setiap esok yang akan datang.",
+    "adabTitle": "Adab Menghadiri Walimah",
+    "adabItem1": "Memperhatikan adab makan & minum",
+    "adabItem2": "Memperhatikan waktu sholat",
+    "adabItem3": "Mendoakan kedua mempelai",
+    "adabItem4": "Berpakaian sopan & menutup aurat",
+    "adabItem5": "Dilarang mengambil gambar tanpa izin",
+    "doaTitle": "Doa Pengantin",
+    "doaTranslation": "\"Semoga Allah memberkahimu di waktu bahagia dan memberkahimu di waktu susah, serta semoga Allah mempersatukan kalian berdua dalam kebaikan.\"",
+    "doaSource": "(HR. Abu Dawud no. 2130)"
   }
 }

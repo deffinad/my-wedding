@@ -17,6 +17,8 @@ import { DresscodeSection } from '@/features/users/components/DresscodeSection'
 import { RsvpSection } from '@/features/users/components/RsvpSection'
 import { FooterSection } from '@/features/users/components/FooterSection'
 import { DesktopCover } from '@/features/users/components/DesktopCover'
+import { AdabSection } from '@/features/users/components/AdabSection'
+import { DoaSection } from '@/features/users/components/DoaSection'
 
 export default function UserPage() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
@@ -100,6 +102,8 @@ export default function UserPage() {
         <OurStorySection t={t} />
         <DresscodeSection t={t} />
         <RsvpSection maxPerson={maxPerson} inviteName={inviteName} t={t} />
+        {audience === 'parents' && <AdabSection t={t} />}
+        {audience === 'parents' && <DoaSection t={t} />}
         <FooterSection t={t} />
       </div>
     </div>
